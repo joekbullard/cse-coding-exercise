@@ -14,4 +14,10 @@ class BasketItem:
     price_type: PriceType = 0
     weight: Optional[Decimal] = None
     quantity: int = 1
-    
+
+    @property
+    def total_price(self) -> Decimal:
+        if self.price_type.FIXED:
+            return self.quantity * self.unit_price
+        else:
+            return self.weight * self.unit_price
