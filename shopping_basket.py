@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from decimal import Decimal
-from typing import Optional
+from typing import Optional, List
 from enum import Enum
 
 class PriceType(Enum):
@@ -21,3 +21,18 @@ class BasketItem:
             return self.quantity * self.unit_price
         else:
             return self.weight * self.unit_price
+        
+
+@dataclass
+class ShoppingBasket:
+    items: List[BasketItem]
+
+    def add_item(self, item: BasketItem) -> None:
+        self.items.append(item)
+
+    def remove_item(self) -> None:
+        '''This is a placeholder method in the absence of a UI'''
+        pass
+
+    def subtotal(self) -> Decimal:
+        return sum([item.total_price for item in self.items])
