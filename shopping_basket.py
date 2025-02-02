@@ -3,6 +3,8 @@ from decimal import Decimal
 from typing import Optional, List
 from enum import Enum
 
+TWOPLACES = Decimal("0.01")
+
 class PriceType(Enum):
     FIXED = 0
     WEIGHED = 1
@@ -18,9 +20,9 @@ class BasketItem:
     @property
     def total_price(self) -> Decimal:
         if self.price_type.FIXED:
-            return self.quantity * self.unit_price
+            return (self.quantity * self.unit_price).quantize(TWOPLACES)
         else:
-            return self.weight * self.unit_price
+            return (self.weight * self.unit_price).quantize(TWOPLACES)
         
 
 @dataclass
@@ -35,4 +37,4 @@ class ShoppingBasket:
         pass
 
     def subtotal(self) -> Decimal:
-        return sum([item.total_price for item in self.items])
+        return sum([item.total_price for item in self.items]).quantize(TWOPLACES)
