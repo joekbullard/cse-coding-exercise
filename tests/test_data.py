@@ -1,5 +1,21 @@
 from shopping_basket import BasketItem, PriceType
+from discounts import Offer
 from decimal import Decimal
+
+test_offers = [
+    Offer(
+        name='Coke two for £1',
+        qualifying_items=['Coke'],
+        qualifying_quantity=2, 
+        discount_amount=Decimal('0.40')
+    ),
+    Offer(
+        name='Beans 3 for 2',
+        qualifying_items=['Beans'],
+        qualifying_quantity=3, 
+        discount_amount=Decimal('0.50')
+    ),
+]
 
 test_items = [
     BasketItem(
