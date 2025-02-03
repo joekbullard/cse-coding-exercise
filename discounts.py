@@ -30,6 +30,27 @@ class OfferDiscount:
 
 @dataclass
 class OfferCalculator:
+    '''
+    Given a list of BasketItems, Calculates Offers and returns a list of OfferDiscount
+    Caveats
+    - Multiple offers for the same items will be applied
+    - Assumes positive number for discount amount
+    
+    O(n^2) - quadratic time
+    Non performant e.g. 2x for loops embedded in each other
+    
+    1. for loop cycling through the offers
+    2. filter cycling through the items for every offer
+    
+    I do not expect a customers basket to contain large amounts of items
+    however if this code is reused for large catalogues instead of customer baskets
+    we should consider making a more performant algorithm to avoid quadratic time
+    
+    A possible improvement could be to pass a filtered array of items into calculate_offers
+    so that we only calculate offers on items that we know to have corresponding offers
+
+    Also needs adjustment to facilitate dynamic discounting (e.g. ales offer which is not implemented)
+    '''
     offers: List[Offer]
 
     def calculate_offers(self, items: List[BasketItem]) -> List[OfferDiscount]:
