@@ -1,5 +1,6 @@
-from decimal import Decimal
 import unittest
+from decimal import Decimal
+from .test_data import test_items
 from shopping_basket import BasketItem, ShoppingBasket, PriceType
 
 
@@ -27,43 +28,11 @@ class TestBasketItem(unittest.TestCase):
 class TestShoppingBasket(unittest.TestCase):
     def setUp(self):
         "used data from exercise sheet"
-        self.test_items = [
-            BasketItem(
-                name="Beans", 
-                unit_price=Decimal("0.50"), 
-                price_type=PriceType.FIXED
-            ),
-            BasketItem(
-                name="Beans", 
-                unit_price=Decimal("0.50"), 
-                price_type=PriceType.FIXED
-            ),
-            BasketItem(
-                name="Beans", 
-                unit_price=Decimal("0.50"), 
-                price_type=PriceType.FIXED
-            ),
-            BasketItem(
-                name="Coke",
-                unit_price=Decimal("0.70"),
-                price_type=PriceType.FIXED,
-            ),
-            BasketItem(
-                name="Coke",
-                unit_price=Decimal("0.70"),
-                price_type=PriceType.FIXED,
-            ),
-            BasketItem(
-                name="Oranges",
-                unit_price=Decimal("1.99"),
-                weight=Decimal("0.200"),
-                price_type=PriceType.WEIGHED,
-            ),
-        ]
+        self.test_items = test_items
 
     def test_subtotal(self):
         basket = ShoppingBasket(self.test_items)
-        self.assertEqual(basket.subtotal(), Decimal('3.30'))
+        self.assertEqual(basket.subtotal(), Decimal("3.30"))
 
 
 if __name__ == "__main__":
