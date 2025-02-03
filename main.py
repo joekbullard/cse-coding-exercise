@@ -67,3 +67,18 @@ offers = [
 ]
 
 
+def main():
+
+    shopping_basket = ShoppingBasket(shopping_items)
+
+    print(shopping_basket)
+    print('-' * 10)
+    print(f"Sub-total: £{shopping_basket.subtotal()}")
+    print('-' * 10)
+    print("Savings")
+    print('-' * 10)
+
+
+if __name__ == "__main__":
+    main()
+
