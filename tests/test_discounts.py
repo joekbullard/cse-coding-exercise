@@ -16,3 +16,6 @@ class TestOfferCalculator(unittest.TestCase):
             basket_items=self.test_items
         )
         self.assertEqual(savings, Decimal("-0.90"))
+
+if __name__ == "__main__":
+    unittest.main()
