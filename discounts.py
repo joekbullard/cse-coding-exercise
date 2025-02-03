@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from decimal import Decimal
 from typing import List
+from shopping_basket import BasketItem
 
 
 
@@ -13,3 +14,8 @@ class Offer:
 
     def __str__(self):
         return f"{self.name}"
+
+
+@dataclass
+class OfferCalculator:
+    offers: List[Offer]
