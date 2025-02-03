@@ -51,7 +51,6 @@ class TestShoppingBasket(unittest.TestCase):
             BasketItem(
                 name="Coke",
                 unit_price=Decimal("0.70"),
-                quantity=3,
                 price_type=PriceType.FIXED,
             ),
             BasketItem(
@@ -62,7 +61,9 @@ class TestShoppingBasket(unittest.TestCase):
             ),
         ]
 
-    pass
+    def test_subtotal(self):
+        basket = ShoppingBasket(self.test_items)
+        self.assertEqual(basket.subtotal(), Decimal('3.30'))
 
 
 if __name__ == "__main__":
