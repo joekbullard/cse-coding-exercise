@@ -19,7 +19,7 @@ class Offer:
 @dataclass
 class OfferDiscount:
     '''
-    return object from offer OfferCalculator.calculate_offers
+    Return object from offer OfferCalculator.calculate_offers
     '''
     name: str
     discount_amount: Decimal

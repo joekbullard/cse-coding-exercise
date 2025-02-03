@@ -25,7 +25,7 @@ class BasketItem:
     '''
     name: str
     unit_price: Optional[Decimal]
-    price_type: PriceType = 0
+    price_type: PriceType = PriceType.FIXED
     weight: Optional[Decimal] = None
     quantity: int = 1
 

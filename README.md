@@ -4,8 +4,6 @@
 
 This application models a supermarket pricing calculator using Python. The idea is to implement a programme that allows for various discount structures to be applied to a shopping basket.
 
-
-
 ### Features ###
 
 * Calculate pricing for individual fixed price/weighed items
@@ -16,6 +14,7 @@ This application models a supermarket pricing calculator using Python. The idea 
 ### Challenges and future improvements ###
 
 With more time and resources, further improvements would include:
+* validation/error handling on class objects (e.g. preventing negative BasketItem value)
 * Handle products in a more scalable way, such as in a database
 * Handle mutually exclusive discounts
 * Handle various customer tiers and loyalty cards
@@ -25,8 +24,8 @@ With more time and resources, further improvements would include:
 ### Installation ###
 
 * Clone this repository
-* to run tests `python -m unittest discover ./tests`
-* to run example main script `python main.py`
+* To run tests `python -m unittest discover ./tests`
+* To run example main script `python main.py`
 
 ```shell
 $ python main.py
