@@ -14,6 +14,18 @@ class Offer:
 
     def __str__(self):
         return f"{self.name}"
+    
+
+@dataclass
+class OfferDiscount:
+    '''
+    return object from offer OfferCalculator.calculate_offers
+    '''
+    name: str
+    discount_amount: Decimal
+
+    def __str__(self):
+        return f"{self.name.ljust(15)} {str(self.discount_amount).ljust(10)}"
 
 
 @dataclass
