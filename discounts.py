@@ -32,17 +32,22 @@ class OfferDiscount:
 class OfferCalculator:
     offers: List[Offer]
 
-    def calculate_offer_discount(self, basket_items: List[BasketItem]) -> Decimal:
-        total_savings = 0
+    def calculate_offers(self, items: List[BasketItem]) -> List[OfferDiscount]:
+        return [
+            discount
+            for offer in self.offers
+            if (discount := self._calculate_offer_discount(offer, items)) is not None
+        ]
+
+
+    def _calculate_offer_discount(self, items: List[BasketItem]) -> OfferDiscount:
         for offer in self.offers:
-            qualifying_items = [item for item in basket_items if item.name in offer.qualifying_items]
+            qualifying_items = [item for item in items if item.name in offer.qualifying_items]
 
             if len(qualifying_items) >= offer.qualifying_quantity:
                 # use floor division to return number of discounts to apply
                 number_discounts = len(qualifying_items) // offer.qualifying_quantity
 
                 offer_savings = number_discounts * -offer.discount_amount
-                print(f"{str(offer).ljust(15)} {str(offer_savings).ljust(10)}")
-                total_savings += offer_savings
         
-        return total_savings
+                return OfferDiscount(name=offer.name, discount_amount=offer_savings)
