@@ -19,9 +19,51 @@ class TestBasketItem(unittest.TestCase):
             name="Oranges",
             unit_price=Decimal("1.99"),
             weight=Decimal("0.200"),
-            price_type=PriceType.WEIGHED
+            price_type=PriceType.WEIGHED,
         )
         self.assertEqual(item.total_price, Decimal("0.40"))
 
-if __name__ == '__main__':
+
+class TestShoppingBasket(unittest.TestCase):
+    def setUp(self):
+        "used data from exercise sheet"
+        self.test_items = [
+            BasketItem(
+                name="Beans", 
+                unit_price=Decimal("0.50"), 
+                price_type=PriceType.FIXED
+            ),
+            BasketItem(
+                name="Beans", 
+                unit_price=Decimal("0.50"), 
+                price_type=PriceType.FIXED
+            ),
+            BasketItem(
+                name="Beans", 
+                unit_price=Decimal("0.50"), 
+                price_type=PriceType.FIXED
+            ),
+            BasketItem(
+                name="Coke",
+                unit_price=Decimal("0.70"),
+                price_type=PriceType.FIXED,
+            ),
+            BasketItem(
+                name="Coke",
+                unit_price=Decimal("0.70"),
+                quantity=3,
+                price_type=PriceType.FIXED,
+            ),
+            BasketItem(
+                name="Oranges",
+                unit_price=Decimal("1.99"),
+                weight=Decimal("0.200"),
+                price_type=PriceType.WEIGHED,
+            ),
+        ]
+
+    pass
+
+
+if __name__ == "__main__":
     unittest.main()
