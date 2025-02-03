@@ -24,6 +24,9 @@ class BasketItem:
         elif self.price_type == PriceType.WEIGHED:
             return (self.weight * self.unit_price).quantize(TWOPLACES)
         
+    def __str__(self):
+        return f"{self.name.ljust(10)} £{str(self.total_price).ljust(10)}"
+        
 
 @dataclass
 class ShoppingBasket:
@@ -38,3 +41,6 @@ class ShoppingBasket:
 
     def subtotal(self) -> Decimal:
         return sum([item.total_price for item in self.items]).quantize(TWOPLACES)
+    
+    def __str__(self):
+        return "\n".join([str(item) for item in self.items])
