@@ -30,6 +30,7 @@ class OfferCalculator:
                 number_discounts = len(qualifying_items) // offer.qualifying_quantity
 
                 offer_savings = number_discounts * -offer.discount_amount
+                print(f"{str(offer).ljust(15)} {str(offer_savings).ljust(10)}")
                 total_savings += offer_savings
         
         return total_savings
