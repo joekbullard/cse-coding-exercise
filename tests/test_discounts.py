@@ -12,10 +12,11 @@ class TestOfferCalculator(unittest.TestCase):
 
     def test_offer_discount(self):
         offer_caulculator = OfferCalculator(offers=self.test_offers)
-        savings = offer_caulculator.calculate_offer_discount(
-            basket_items=self.test_items
+        discounts = offer_caulculator.calculate_offers(
+            items=self.test_items
         )
-        self.assertEqual(savings, Decimal("-0.90"))
+        total_savings = sum([discount.discount_amount for discount in discounts])
+        self.assertEqual(total_savings, Decimal("-0.90"))
 
 if __name__ == "__main__":
     unittest.main()
