@@ -14,5 +14,14 @@ class TestBasketItem(unittest.TestCase):
         )
         self.assertEqual(item.total_price, Decimal("2.10"))
 
+    def test_weighed_price_item(self):
+        item = BasketItem(
+            name="Oranges",
+            unit_price=Decimal("1.99"),
+            weight=Decimal("0.200"),
+            price_type=PriceType.WEIGHED
+        )
+        self.assertEqual(item.total_price, Decimal("0.40"))
+
 if __name__ == '__main__':
     unittest.main()
