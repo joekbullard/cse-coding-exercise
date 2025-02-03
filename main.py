@@ -9,38 +9,31 @@ Example script demonstrating shopping basket calculator
 shopping_items = [
     BasketItem(
         name="Beans", 
-        unit_price=Decimal("0.50"), 
-        price_type=PriceType.FIXED
+        unit_price=Decimal("0.50")
     ),
     BasketItem(
         name="Beans", 
         unit_price=Decimal("0.50"), 
-        price_type=PriceType.FIXED
     ),
     BasketItem(
         name="Beans", 
         unit_price=Decimal("0.50"), 
-        price_type=PriceType.FIXED
     ),
     BasketItem(
         name="Beans", 
         unit_price=Decimal("0.50"), 
-        price_type=PriceType.FIXED
     ),
     BasketItem(
         name="Coke",
         unit_price=Decimal("0.70"),
-        price_type=PriceType.FIXED,
     ),
     BasketItem(
         name="Coke",
         unit_price=Decimal("0.70"),
-        price_type=PriceType.FIXED,
     ),
     BasketItem(
         name="Coke",
         unit_price=Decimal("0.70"),
-        price_type=PriceType.FIXED,
     ),
     BasketItem(
         name="Onions",
