@@ -69,15 +69,24 @@ offers = [
 
 def main():
 
+    line_break = '-' * 10
+
     shopping_basket = ShoppingBasket(shopping_items)
+    offer_calculator = OfferCalculator(offers)
+    subtotal = shopping_basket.subtotal()
+    
 
     print(shopping_basket)
-    print('-' * 10)
-    print(f"Sub-total: £{shopping_basket.subtotal()}")
-    print('-' * 10)
+    print(line_break)
+    print(f"Sub-total: {subtotal}")
+    print(line_break)
     print("Savings")
-    print('-' * 10)
-
+    total_savings = offer_calculator.calculate_offer_discount(shopping_basket.items)
+    if total_savings < 0:
+        print(f"Total savings {str(total_savings)}")
+    total_to_pay = subtotal + total_savings
+    print(line_break)
+    print(f"Total to pay: {total_to_pay}\n")
 
 if __name__ == "__main__":
     main()
