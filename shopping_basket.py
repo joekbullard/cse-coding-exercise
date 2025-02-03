@@ -19,9 +19,9 @@ class BasketItem:
 
     @property
     def total_price(self) -> Decimal:
-        if self.price_type.FIXED:
+        if self.price_type == PriceType.FIXED:
             return (self.quantity * self.unit_price).quantize(TWOPLACES)
-        else:
+        elif self.price_type == PriceType.WEIGHED:
             return (self.weight * self.unit_price).quantize(TWOPLACES)
         
 
