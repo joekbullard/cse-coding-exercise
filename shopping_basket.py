@@ -11,6 +11,18 @@ class PriceType(Enum):
 
 @dataclass
 class BasketItem:
+    '''Represents a single item basket, in real world this would come from server
+    e.g.
+    [
+        {
+            "id": 1593481,
+            "name": "Beans",
+            "unit_price": 0.50,
+            "price_type": "fixed",
+        },
+        ...
+    ]
+    '''
     name: str
     unit_price: Optional[Decimal]
     price_type: PriceType = 0
@@ -25,11 +37,17 @@ class BasketItem:
             return (self.weight * self.unit_price).quantize(TWOPLACES)
         
     def __str__(self):
-        return f"{self.name.ljust(10)} £{str(self.total_price).ljust(10)}"
+        return f"{self.name.ljust(15)} {str(self.total_price).ljust(10)}"
         
 
 @dataclass
 class ShoppingBasket:
+    '''
+    Class to represent shopping basket.
+    Using list of BasketItems can calculate sub-total
+    Can add individual items
+    TODO: Option to remove item
+    '''
     items: List[BasketItem]
 
     def add_item(self, item: BasketItem) -> None:
