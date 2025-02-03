@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from decimal import Decimal
-from typing import List
+from typing import List, Iterator
 from shopping_basket import BasketItem
 
 
@@ -33,21 +33,15 @@ class OfferCalculator:
     offers: List[Offer]
 
     def calculate_offers(self, items: List[BasketItem]) -> List[OfferDiscount]:
-        return [
-            discount
-            for offer in self.offers
-            if (discount := self._calculate_offer_discount(offer, items)) is not None
-        ]
+        return list(self._calculate_offer_discount(items))
 
 
-    def _calculate_offer_discount(self, items: List[BasketItem]) -> OfferDiscount:
+    def _calculate_offer_discount(self, items: List[BasketItem]) -> Iterator[OfferDiscount]:
         for offer in self.offers:
             qualifying_items = [item for item in items if item.name in offer.qualifying_items]
 
             if len(qualifying_items) >= offer.qualifying_quantity:
                 # use floor division to return number of discounts to apply
                 number_discounts = len(qualifying_items) // offer.qualifying_quantity
-
                 offer_savings = number_discounts * -offer.discount_amount
-        
-                return OfferDiscount(name=offer.name, discount_amount=offer_savings)
+                yield OfferDiscount(name=offer.name, discount_amount=offer_savings)
