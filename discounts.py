@@ -2,7 +2,15 @@ from dataclasses import dataclass
 from decimal import Decimal
 from typing import List, Iterator
 from shopping_basket import BasketItem
+from enum import Enum, auto
 
+
+class DiscountType(Enum):
+    FIXED_BUNDLE = auto()
+    FIXED_ITEM = auto()
+    # could also have %age or threshold e.g.
+    # PERCENTAGE = auto()
+    # THRESHOLD = auto()
 
 
 @dataclass
@@ -10,11 +18,16 @@ class Offer:
     name: str
     qualifying_items: List[str]
     qualifying_quantity: int
+    discount_type: DiscountType
     discount_amount: Decimal
 
     def __str__(self):
         return f"{self.name}"
     
+
+""" For instances where multiple BasketItems you could have like this:
+offer = Offer("3 Ales for £6", [golden_ale, ipa, neipa, stout], 3, DiscountType.FIXED_BUNDLE, 6.00)
+"""
 
 @dataclass
 class OfferDiscount:
