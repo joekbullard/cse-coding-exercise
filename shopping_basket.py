@@ -1,13 +1,13 @@
 from dataclasses import dataclass
 from decimal import Decimal
 from typing import Optional, List
-from enum import Enum
+from enum import Enum, auto
 
 TWOPLACES = Decimal("0.01")
 
 class PriceType(Enum):
-    FIXED = 0
-    WEIGHED = 1
+    FIXED = auto()
+    WEIGHED = auto()
 
 @dataclass
 class BasketItem:
@@ -62,3 +62,6 @@ class ShoppingBasket:
     
     def __str__(self):
         return "\n".join([str(item) for item in self.items])
+    
+    def __len__(self):
+        return len(self.items)
