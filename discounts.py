@@ -19,7 +19,7 @@ class Offer:
     qualifying_items: List[str]
     qualifying_quantity: int
     offer_type: OfferType
-    discount_amount: Decimal
+    discount_amount: Decimal = None
 
     def __str__(self):
         return f"{self.name}"
@@ -67,8 +67,7 @@ class OfferCalculator:
                 elif offer.offer_type == OfferType.FIXED_BUNDLE:
                     total_items_in_bundle = number_discounts * offer.qualifying_quantity
                     offer_item_subtotal = 0
-                    for _ in range(total_items_in_bundle):
-                        item = next(qualifying_items)
+                    for item in qualifying_items[:total_items_in_bundle]:
                         offer_item_subtotal += item.total_price
                     offer_savings =  offer.discount_amount - offer_item_subtotal
 
