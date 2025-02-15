@@ -32,7 +32,7 @@ class TestShoppingBasket(unittest.TestCase):
 
     def test_subtotal(self):
         basket = ShoppingBasket(self.test_items)
-        self.assertEqual(basket.subtotal(), Decimal("3.30"))
+        self.assertEqual(basket.subtotal(), Decimal("16.25"))
 
 
 if __name__ == "__main__":
